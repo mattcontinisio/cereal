@@ -597,6 +597,32 @@ namespace cereal
         return itsIteratorStack.back().name();
       }
 
+      //! Retrieves the current node type
+      NodeType getNodeType()
+      {
+        const auto& value = itsIteratorStack.back().value();
+        if(value.IsNull())
+        {
+          return NodeType::Null;
+        }
+        else if(value.IsString())
+        {
+          return NodeType::String;
+        }
+        if(value.IsArray())
+        {
+          return NodeType::Array;
+        }
+        else if(value.IsObject())
+        {
+          return NodeType::Map;
+        }
+        else
+        {
+          return NodeType::String;
+        }
+      }
+
       //! Sets the name for the next node created with startNode
       void setNextName( const char * name )
       {

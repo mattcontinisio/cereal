@@ -46,6 +46,14 @@
 
 namespace cereal
 {
+  enum class NodeType
+  {
+    Null,
+    String,
+    Array,
+    Map
+  };
+
   // ######################################################################
   //! Creates a name value pair
   /*! @relates NameValuePair
