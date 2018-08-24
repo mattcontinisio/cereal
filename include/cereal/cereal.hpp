@@ -50,6 +50,9 @@ namespace cereal
   {
     Null,
     String,
+    Int,
+    Double,
+    Bool,
     Array,
     Map
   };

@@ -600,6 +600,8 @@ namespace cereal
       //! Retrieves the current node type
       NodeType getNodeType()
       {
+        search();
+
         const auto& value = itsIteratorStack.back().value();
         if(value.IsNull())
         {
@@ -608,6 +610,18 @@ namespace cereal
         else if(value.IsString())
         {
           return NodeType::String;
+        }
+        else if(value.IsInt())
+        {
+          return NodeType::Int;
+        }
+        else if(value.IsDouble())
+        {
+          return NodeType::Double;
+        }
+        else if(value.IsBool())
+        {
+          return NodeType::Bool;
         }
         if(value.IsArray())
         {
